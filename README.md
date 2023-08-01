@@ -26,15 +26,15 @@ Examples: `:help` `:clear`
 ### Match node
 
 ```cypher
-MATCH (ee:Person)
-WHERE ee.name = "Emil"
-RETURN ee;
+MATCH (p:Person)
+WHERE p.name = "Emma"
+RETURN p;
 ```
 
 * **MATCH** clause to specify a pattern of nodes and relationships
-* **(ee:Person)** a single node pattern with label 'Person' which will assign matches to the variable `ee`
+* **(p:Person)** a single node pattern with label 'Person' which will assign matches to the variable `p`
 * **WHERE** clause to constrain the results
-* **ee.name = "Emil"** compares name property to the value "Emil"
+* **p.name = "Emma"** compares name property to the value "Emma"
 * **RETURN** clause used to request particular results
 
 Gets gets the id<5> and id<0> nodes and creates a `:KNOWS` relationship between them
@@ -42,29 +42,29 @@ Gets gets the id<5> and id<0> nodes and creates a `:KNOWS` relationship between 
 ### Match nodes and relationships
 
 ```cypher
-MATCH (ee:Person)-[:KNOWS]-(friends)
-WHERE ee.name = "Emil"
-RETURN ee, friends
+MATCH (p:Person)-[:KNOWS]-(friends)
+WHERE p.name = "Emma"
+RETURN p, friends
 ```
 
 * **MATCH** clause to describe the pattern from known Nodes to found Nodes
-* **(ee)** starts the pattern with a Person (qualified by WHERE)
+* **(p)** starts the pattern with a Person (qualified by WHERE)
 * **-[:KNOWS]-** matches "KNOWS" relationships (in either direction)
-* **(friends)** will be bound to Emil's friends
+* **(friends)** will be bound to Emma's friends
 
 ### Match labels
 
 ```cypher
-MATCH (n:Person)
-RETURN n
+MATCH (p:Person)
+RETURN p
 ```
 
 or
 
 ```cypher
-MATCH (n)
-WHERE n:Person
-RETURN n
+MATCH (p)
+WHERE p:Person
+RETURN p
 ```
 
 ### Match multiple labels
@@ -72,28 +72,28 @@ RETURN n
 `:Car` **OR** `:Person` labels
 
 ```cypher
-MATCH (n)
-WHERE n:Person OR n:Car
-RETURN n
+MATCH (p)
+WHERE p:Person OR p:Car
+RETURN p
 ```
 
 `:Car` **AND** `:Person` labels
 
 ```cypher
-MATCH (n)
-WHERE n:Person:Car
-RETURN n
+MATCH (p)
+WHERE p:Person:Car
+RETURN p
 ```
 
 ### Match same properties
 
 ```cypher
-MATCH (a:Person)
-WHERE a.from = "Sweden"
-RETURN a
+MATCH (p:Person)
+WHERE p.from = "Tunisia"
+RETURN p
 ```
 
-Returns every node (and their relationships) where there's a property `from` with "Sweden" value
+Returns every node (and their relationships) where there's a property `from` with "Tunisia" value
 
 ### Match friends of friends with same hobbies
 
