@@ -155,8 +155,8 @@ CREATE (ee:Person { name: "Emil", from: "Sweden", klout: 99 })
 ### Create nodes and relationships
 
 ```cypher
-MATCH (ee:Person) WHERE ee.name = "Emil"
-CREATE (js:Person { name: "Johan", from: "Sweden", learn: "surfing" }),
+MATCH (ee:Person) WHERE ee.name = "Emma"
+CREATE (js:Person { name: "Johan", from: "Tunisia", learn: "surfing" }),
 (ir:Person { name: "Ian", from: "England", title: "author" }),
 (rvb:Person { name: "Rik", from: "Belgium", pet: "Orval" }),
 (ally:Person { name: "Allison", from: "California", hobby: "surfing" }),
@@ -166,21 +166,21 @@ CREATE (js:Person { name: "Johan", from: "Sweden", learn: "surfing" }),
 (rvb)-[:KNOWS]->(ally)
 ```
 
-* **MATCH** clause to get "Emil" in `ee` variable
+* **MATCH** clause to get "Emma" in `ee` variable
 * **CREATE** clause to create multiple nodes (comma separated) with their labels and properties. Also creates directed relationships `(a)-[:Label {key: value}]->(b)`
 
 ### Create relationship between 2 unrelated nodes
 
 ```cypher
 MATCH (n), (m)
-WHERE n.name = "Allison" AND m.name = "Emil"
+WHERE n.name = "Allison" AND m.name = "Emma"
 CREATE (n)-[:KNOWS]->(m)
 ```
 
 Alternative with `MERGE`, which ensures that the relationship is created only **once**
 
 ```cypher
-MATCH (n:User {name: "Allison"}), (m:User {name: "Emil"})
+MATCH (n:User {name: "Allison"}), (m:User {name: "Emma"})
 MERGE (n)-[:KNOWS]->(m)
 ```
 
@@ -381,11 +381,11 @@ RETURN count(*);
 
 ### Limit
 
-Returns up to 2 nodes (and their relationships) where there's a property `from` with "Sweden" value
+Returns up to 2 nodes (and their relationships) where there's a property `from` with "Tunisia" value
 
 ```cypher
 MATCH (a:Person)
-WHERE a.from = "Sweden"
+WHERE a.from = "Tunisia"
 RETURN a
 LIMIT 2
 ```
