@@ -1,7 +1,5 @@
 # Neo4j_Cypher_Query_Language_Cheatsheet
 
-# Neo4j Tutorial
-
 ## Fundamentals
 
 Store any kind of data using the following graph concepts:
